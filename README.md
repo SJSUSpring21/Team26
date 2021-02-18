@@ -9,6 +9,7 @@ Predicting future stock prices depending on previous data, news and current mark
 
 
 Idea #3:Film review Detection
-Categorise films based on audience reviews. Also, predicting whether the film will be a super-hit or flop.
+Categorise films based on audience reviews. Also, predicting whether the film will be a super-hit or flop. Sentiment analysis of movies using IMDB Ratings of movies.
+
 
 
