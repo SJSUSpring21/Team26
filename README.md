@@ -34,6 +34,13 @@ Abstract:
 Dynamic pricing is the practice of setting a price for movie tickets after scrutinizing current market conditions. In the blooming era of Netflix, Amazon Prime and Sony Liv, cinema halls are losing out their revenue. Dynamic Pricing can be an efficient way to attract audiences back to cinema halls as was the trend 10 years back when there was no Netflix, Amazon Prime and Sony Liv.
 
 
+**Idea #4 Restaurant Recommendation system**
+
+Abstract:
+There are many recommendation system available for problems like shopping, online entertainment platforms such as youtube, netflix, amazon prime etc. Restaurant and dining is one area where there is big opportunity to recommend the restaurant options to users based on their preference like which dish they ate, which dish they like and also based on their historical data like which type of restaurants they go mostly, given good reviews to certain restaurants and given tip to them. Yelp is a good soure of such data with not only restaurant reviews, but also user level information on thier preferred restaurants. There are machine algorithms like Linear SVM, Logistic regression to perform on this dataset. We can predict whether a given yelp user visiting a restaurant will like it or not.
+
+
+
 
 
 
