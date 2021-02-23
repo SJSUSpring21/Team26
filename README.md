@@ -7,14 +7,16 @@ Recommends music as per user's genre preference. Also recommends good music to u
 Idea #2: Stock Price Detector
 Predicting future stock prices depending on previous data, news and current market sentiments.
 
+**Idea #3:Predicting IMDb ratings of the new upcoming movies**
 
-Idea #3:Film review Detection
-Categorise films based on audience reviews. Also, predicting whether the film will be a super-hit or flop. Sentiment analysis of movies using IMDB Ratings of movies.
+**Introduction**
+IMDb Predictor will help new producers/script writers to get a rough idea how their movie will fare in the box-office. A bad film could bring young budding film directors to bankrupcy if their film does not fare at the box office. IMDb predictor will help such budding producers/script writers to play safe.
+Target audience: Script writers or film producers
+Goal: To give accurate IMDb rating prediction before the movie hits the box-office.
 
-**Idea #4: Film Script IMDB Predictor** 
+**Abstract:**
+Amateur directors/script-writers can upload their movie information like:
+budget,actors,director and length of the movie to our IMDb prediction model in order to get an accurate prediction of their movie will fare in the box office. We will use the IMDb dataset to make accurate predictions.
 
-Amateur/aspiring screenwriters have a difficult time getting their scripts criticed and read. This application is intended to give a film script, a IMDB score and scripts that are most similar to it that have already in the IMDB database based on it's similiarity to films. So screenwriters have a slight insight into how their scripts compare to works already out there and gain inspiration from similiar works. The current approach to this problem is to vectorize the script and then run k-nearest neighbor to find k most similar film scripts and average their IMDB scores for a score prediction.
 
-**Input:** Script text file
 
-**Output:** an IMDB prediction score and 5(10,20?) Films with similar scripts
