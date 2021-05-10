@@ -7,6 +7,7 @@ import backendServer from "../../webConfig";
 export default function App() {
   const [startIndex, setStart] = React.useState("");
   const [endIndex, setEnd] = React.useState("");
+  const [genre, setGenre] = React.useState("");
  
   
 
@@ -20,9 +21,9 @@ export default function App() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2><b>Similar Movie Prediction</b></h2>
+      <h2><b>Recommend By Genre!</b></h2>
       <label>
-        Movie Name:
+        Genre:
         <input
           name="title"
           type="text"
