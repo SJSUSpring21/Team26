@@ -14,7 +14,7 @@ from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import wordnet
-from flask_caching import Cache;
+# from flask_caching import Cache;
 # import surprise
 # from surprise import Reader, Dataset, SVD
 # from surprise.model_selection import cross_validate
@@ -46,6 +46,40 @@ cache=TTLCache(maxsize=500,ttl=60)
 #     print("Model loaded!")
 #     return loaded_model
     
+
+@app.route('/genre',methods=['POST'])
+
+def genre():
+    print("Inside Genre")
+    genre = request.json['genre']
+    start_index = request.json['startIndex']
+    final_index = request.json['lastIndex']
+    print(genre)
+    print(start_index)
+    print(final_index)
+    print(type(start_index))
+    
+    moviedf = pd.read_csv("/home/danesh/Downloads/unique10000.csv", sep = None)
+    # test_text = input ("Enter genre: ")
+
+    moviegenredf = moviedf[moviedf.Genre.str.contains(genre,case=False)]
+
+    # # start_index = input ("Enter start index: ")
+    # # final_index = input ("Enter final index: ")
+    # start_index2 = int(start_index)
+    # final_index2 = int(final_index)
+
+    movieGenreratingsdf = moviegenredf[(moviegenredf['Imdb'] >= start_index) & (moviegenredf['Imdb'] <= final_index)]
+
+    movieGenreratingsdf2 = movieGenreratingsdf[['Title', 'Imdb', 'Genre']].sort_values(by = ['Imdb'])
+    movieGenreratingsdflist = movieGenreratingsdf2.values.tolist()
+    print(movieGenreratingsdflist)
+    # JSONP_data = jsonpify(df_list)
+
+    return jsonify(movieGenreratingsdflist)
+
+
+
 
 
 
