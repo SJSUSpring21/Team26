@@ -5,7 +5,8 @@ import backendServer from "../../webConfig";
 
 
 export default function App() {
-  const [title, setTitle] = React.useState("");
+  const [startIndex, setStart] = React.useState("");
+  const [endIndex, setEnd] = React.useState("");
  
   
 

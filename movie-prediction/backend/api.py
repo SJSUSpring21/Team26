@@ -14,21 +14,47 @@ from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import wordnet
+from flask_caching import Cache;
 # import surprise
 # from surprise import Reader, Dataset, SVD
 # from surprise.model_selection import cross_validate
+from cachetools import cached,TTLCache
 
 
 import warnings; warnings.simplefilter('ignore')
+
+# cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
+# cache.init_app(app)
+
 
 
 
 app=Flask(__name__)
 app.config['DEBUG'] = True
 
+cache=TTLCache(maxsize=500,ttl=60)
+
+
+# @cached(cache)
+# # @app.route('/loadmodel',methods=['GET'])
+# def loadmodel():
+   
+#     filename = r'C:\Users\Checkout\finalized_model.sav'
+#     # global loaded_model
+#     loaded_model = pickle.load(open(filename, 'rb'))
+
+#     print("Model loaded!")
+#     return loaded_model
+    
+
+
+
+
+
 @app.route('/api',methods=['POST'])
 
 def api():
+    loadmodel()
     print("Inside API")
     title=  request.json['title']
     print(title)
@@ -96,9 +122,7 @@ def api():
     tfidf_matrix = tf.fit_transform(smd['description'])
     # print(tfidf_matrix.shape)
 
-    filename = r'C:\Users\Checkout\finalized_model.sav'
-    loaded_model = pickle.load(open(filename, 'rb'))
-    print("Model loaded!")
+    
 
     smd = smd.reset_index()
     titles = smd['title']
