@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "../Predictions/predictions.css";
+// import "../Predictions/predictions.css";
 import axios from 'axios';
 import backendServer from "../../webConfig";
 import { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar"
 
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
   }
 
   return (
+    <div>
+    <Navbar></Navbar>
    <h1>Landing Page</h1>
+   </div>
   );
 }
