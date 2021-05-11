@@ -27,3 +27,12 @@
     background-color: #22223B;
     color: #fefefe;
 }
+
+.genreClass
+{
+  padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid #d6d1d5;
+    margin-top: 5px;
+    height:45px
+}

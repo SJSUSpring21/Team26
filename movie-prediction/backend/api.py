@@ -2,6 +2,7 @@ from flask import Flask,jsonify
 import pickle
 from flask import request
 import numpy as np
+import random
 
 import pandas as pd
 import numpy as np
@@ -19,7 +20,7 @@ from nltk.corpus import wordnet
 # from surprise import Reader, Dataset, SVD
 # from surprise.model_selection import cross_validate
 from cachetools import cached,TTLCache
-
+from flask_cors import CORS, cross_origin
 
 import warnings; warnings.simplefilter('ignore')
 
@@ -29,8 +30,12 @@ import warnings; warnings.simplefilter('ignore')
 
 
 
+
 app=Flask(__name__)
 app.config['DEBUG'] = True
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 cache=TTLCache(maxsize=500,ttl=60)
 
@@ -53,11 +58,16 @@ def genre():
     print("Inside Genre")
     genre = request.json['genre']
     start_index = request.json['startIndex']
-    final_index = request.json['lastIndex']
+    final_index = request.json['endIndex']
     print(genre)
     print(start_index)
     print(final_index)
     print(type(start_index))
+    print(type(final_index))
+    final_index=float(final_index)
+    print(type(final_index))
+    final_index=final_index-0.1
+    final_index=str(final_index)
     
     moviedf = pd.read_csv("/home/danesh/Downloads/unique10000.csv", sep = None)
     # test_text = input ("Enter genre: ")
@@ -71,8 +81,11 @@ def genre():
 
     movieGenreratingsdf = moviegenredf[(moviegenredf['Imdb'] >= start_index) & (moviegenredf['Imdb'] <= final_index)]
 
-    movieGenreratingsdf2 = movieGenreratingsdf[['Title', 'Imdb', 'Genre']].sort_values(by = ['Imdb'])
+    movieGenreratingsdf2 = movieGenreratingsdf[['Title', 'Imdb']].sort_values(by = ['Imdb'])
     movieGenreratingsdflist = movieGenreratingsdf2.values.tolist()
+
+
+    movieGenreratingsdflist=random.sample(movieGenreratingsdflist,10)
     print(movieGenreratingsdflist)
     # JSONP_data = jsonpify(df_list)
 
