@@ -149,13 +149,13 @@ export default function RangeSlider() {
       <br></br>
       <TableContainer component={Paper}>
       <Table aria-label="simple table">
-      <TableHead>
+      {/* <TableHead>
       <TableRow>
       <TableCell>Movie</TableCell>
       <TableCell align="right">Rating</TableCell>
 
       </TableRow>
-      </TableHead>
+      </TableHead> */}
       <TableBody>
       {data_to_display.map((row) => (
       <TableRow key={row}>
