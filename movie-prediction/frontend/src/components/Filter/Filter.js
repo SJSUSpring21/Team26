@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography'
 import Slider from '@material-ui/core/Slider';
 import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Navbar from "../Navbar/Navbar"
+import "../Filter/filter.css"
 
 
 const useStyles = makeStyles({
@@ -45,7 +47,9 @@ export default function RangeSlider() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <Navbar></Navbar>
+    <form onSubmit={handleSubmit} className="filter-form">
       <h2><b>Recommend By Genre!</b></h2>
       <label>
         Genre:
@@ -73,7 +77,8 @@ export default function RangeSlider() {
 
       
 
-      <button>Submit</button>
+      <button className="filter-button">Submit</button>
     </form>
+    </div>
   );
 }

@@ -23,10 +23,16 @@ const styles = theme => ({
     marginRight: theme.spacing(2)
   },
   title: {
+    marginLeft: "40vw",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
-    }
+      
+    },
+    
+
+
+
   },
   search: {
     position: "relative",

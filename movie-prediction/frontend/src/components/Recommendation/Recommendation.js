@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../Predictions/predictions.css";
 import axios from 'axios';
 import backendServer from "../../webConfig";
+import "../Recommendation/recommendation.css"
+import Navbar from "../Navbar/Navbar"
 
 
 export default function App() {
@@ -18,7 +20,10 @@ export default function App() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <Navbar></Navbar>
+    <form onSubmit={handleSubmit}
+    className="recommendation-form">
       <h2><b>Similar Movie Prediction</b></h2>
       <label>
         Movie Name:
@@ -32,7 +37,8 @@ export default function App() {
 
       
 
-      <button>Submit</button>
+      <button className="recommendation-button">Submit</button>
     </form>
+    </div>
   );
 }

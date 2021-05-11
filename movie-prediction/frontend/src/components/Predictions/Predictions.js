@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../Predictions/predictions.css"
+import Navbar from "../Navbar/Navbar"
 
 
 export default function App() {
@@ -23,7 +24,12 @@ export default function App() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <Navbar></Navbar>
+    <div classname="predict-body">
+    <form 
+    onSubmit={handleSubmit}
+    className="predict-form">
       <h2><b>Predict IMDB Rating!</b></h2>
 
       <label>
@@ -78,7 +84,9 @@ export default function App() {
 
       
 
-      <button>Submit</button>
+      <button className="predictbutton">Submit</button>
     </form>
+    </div>
+    </div>
   );
 }
