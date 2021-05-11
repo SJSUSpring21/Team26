@@ -22,9 +22,7 @@ const useStyles = makeStyles({
   root: {
     width: 300,
   },
-  table: {
-    minWidth: 650,
-  },
+  
 });
 
 
@@ -36,6 +34,7 @@ export default function RangeSlider() {
   const [genre, setGenre] = React.useState("");
  
   const [value, setValue] = useState([0, 10]);
+  const [data_to_display, setDisplay] = useState([]);
 
 
   
@@ -58,6 +57,19 @@ export default function RangeSlider() {
         // console.log("movies data:", response.data)
         let response_array=response.data
         console.log("Getting response array",response_array)
+        if(response_array.length<10)
+        {
+          setDisplay(response_array)
+        }
+        else
+        {
+          const shuffled = response_array.sort(() => 0.5 - Math.random());
+          let selected = shuffled.slice(0, 10);
+          console.log("SHuffled and randomly picked array:",selected)
+          setDisplay(selected)
+        }
+        
+       
 
       })
       
@@ -134,6 +146,26 @@ export default function RangeSlider() {
       
 
       <button className="filter-button" onSubmit={handleSubmit}>Submit</button>
+      <br></br>
+      <TableContainer component={Paper}>
+      <Table aria-label="simple table">
+      <TableHead>
+      <TableRow>
+      <TableCell>Movie</TableCell>
+      <TableCell align="right">Rating</TableCell>
+
+      </TableRow>
+      </TableHead>
+      <TableBody>
+      {data_to_display.map((row) => (
+      <TableRow key={row}>
+        <TableCell component="th" scope="row">{row[0]}</TableCell>
+        <TableCell align="right">{row[1]}</TableCell>
+        </TableRow>
+      ))}
+      </TableBody>
+      </Table>
+      </TableContainer>
     </form>
     </div>
   );

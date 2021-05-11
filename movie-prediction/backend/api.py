@@ -69,7 +69,7 @@ def genre():
     final_index=final_index-0.1
     final_index=str(final_index)
     
-    moviedf = pd.read_csv("/home/danesh/Downloads/unique10000.csv", sep = None)
+    moviedf = pd.read_csv(r"C:\Users\Checkout\Downloads\unique10000 (1).csv", sep = None)
     # test_text = input ("Enter genre: ")
 
     moviegenredf = moviedf[moviedf.Genre.str.contains(genre,case=False)]
@@ -85,7 +85,7 @@ def genre():
     movieGenreratingsdflist = movieGenreratingsdf2.values.tolist()
 
 
-    movieGenreratingsdflist=random.sample(movieGenreratingsdflist,10)
+    movieGenreratingsdflist=movieGenreratingsdflist
     print(movieGenreratingsdflist)
     # JSONP_data = jsonpify(df_list)
 
