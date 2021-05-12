@@ -298,6 +298,15 @@ def getDirectors():
     
     return jsonify(directors)
 
+@app.route('/getgenre',methods=['GET'])
+
+def getGenre():
+    print("Inside all Genre")
+    all_data=pd.read_csv(r"moviesdata7.csv")
+    genre = list(all_data["Genre"].unique())
+    
+    return jsonify(genre)
+
 
 
 
