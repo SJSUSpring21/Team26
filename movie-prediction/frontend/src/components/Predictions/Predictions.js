@@ -132,11 +132,12 @@ export default function App() {
       <h2><b>Predict IMDB Rating!</b></h2>
 
       <label>
-        Movie Name:
+        
         <input
          
           name="movie"
           type="text"
+          placeholder="Enter Movie Name"
           value={movie}
           onChange={e => setMovieName(e.target.value)}
           required />
@@ -189,18 +190,19 @@ export default function App() {
       }}
     />
 
-    
+<br></br>
 
       <label>
-        Budget:
+        
         <input
           name="budget"
           type="text"
+          placeholder="Budget of the Movie"
           value={budget}
           onChange={e => setBudget(e.target.value)}
           required />
       </label>
-
+      <br></br>
       
 
       <button className="predictbutton">Submit</button>
