@@ -27,3 +27,19 @@
     background-color: #22223B;
     color: #fefefe;
 }
+
+.recommend-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  min-width: 100px;
+  min-height: 400px;
+  padding: 20px 40px 40px 40px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 36px #222;
+  background-color: #fefefe;
+  text-align: center;
+  margin: 0 auto;
+  margin-top:150px;
+  
+}
