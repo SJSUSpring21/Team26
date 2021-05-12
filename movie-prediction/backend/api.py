@@ -15,6 +15,11 @@ from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
 from nltk.stem.snowball import SnowballStemmer
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import wordnet
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+import math
+import os
 # from flask_caching import Cache;
 # import surprise
 # from surprise import Reader, Dataset, SVD
@@ -154,32 +159,32 @@ def recommendation():
 
 def imdbpredict():
 
-    movie = request.json("movie")
-    director = request.json("director")
-    actor1 = request.json("actor1")
-    actor2 = request.json("actor2")
-    genre = request.json("genre")
+    movie = request.json["movie"]
+    director = request.json["director"]
+    actor1 = request.json["actor1"]
+    actor2 = request.json["actor2"]
+    genre = request.json["genre"]
 
     def stringToInt(string):
-    integer = 0
+        integer = 0
     #try seeing if string value given is already a number if so the output would be
-    try:
+        try:
         #means string value given is already a int
-        integer = int(string)
-    except:
-        string = string.lower()
-        for i in string:
-            integer += ord(i)
-    return integer
+            integer = int(string)
+        except:
+            string = string.lower()
+            for i in string:
+                integer += ord(i)
+        return integer
 
 
 # data = pd.read_csv("/content/drive/My Drive/Colab Notebooks/Danesh 272/movies2.csv", encoding="latin-1")
 # data2 = pd.read_csv("/content/drive/My Drive/Colab Notebooks/Danesh 272/moviesdata7.csv", encoding="latin-1")
-    data3 = pd.read_csv(r"unique10000 (1).csv", encoding="latin-1")
+    data3 = pd.read_csv(r"moviesdata7.csv", encoding="latin-1")
 # print(data3)
 
-    for i in range(4):
-        data3 = data3.drop(data3.columns[-1], axis=1)
+    # for i in range(4):
+    #     data3 = data3.drop(data3.columns[-1], axis=1)
 
 # print(data3.describe())
     print()
@@ -246,11 +251,11 @@ def imdbpredict():
 # budget = int(input("Enter the budget for the movie: "))
 
     prediction = model.predict([[movie, genre, actor1, director, actor2]])
-
-    print()
+    return jsonify(prediction[0]/10)
+    
     print(f"The predicted IMDb Rating for the above combination is: {prediction[0]/10}/10")
 
-    return "ok"
+    
     
 
 
@@ -263,6 +268,41 @@ def getMovies():
     
     return jsonify(titles)
     
+
+
+
+@app.route('/getallactors1',methods=['GET'])
+
+def getActors1():
+    print("Inside Get all actors")
+    all_data=pd.read_csv(r"moviesdata7.csv")
+    actors = list(all_data["Actor1"].unique())
+    
+    return jsonify(actors)
+
+@app.route('/getallactors2',methods=['GET'])
+
+def getActors2():
+    print("Inside Get all actors2")
+    all_data=pd.read_csv(r"moviesdata7.csv")
+    actors = list(all_data["Actor2"].unique())
+    
+    return jsonify(actors)
+
+@app.route('/getdirectors',methods=['GET'])
+
+def getDirectors():
+    print("Inside all Directors")
+    all_data=pd.read_csv(r"moviesdata7.csv")
+    directors = list(all_data["Director"].unique())
+    
+    return jsonify(directors)
+
+
+
+
+
+
 
     
 
