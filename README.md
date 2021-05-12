@@ -1,4 +1,4 @@
-# **Helping Critic**
+# **All About Movies!**
 
 ## **Introduction:**
 IMDb Predictor will help new producers/script writers to get a rough idea how their movie will fare in the box-office. A bad film could bring young budding film directors to bankrupcy if their film does not fare at the box office. IMDb predictor will help such budding producers/script writers to play safe.
